@@ -1,7 +1,7 @@
 export default function Header(){
     return (
         <>
-            <h1>안녕하세요~!</h1>
+            <h1>깃 멈춰!</h1>
         </>
     );
 }
