@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../pages/components/header"
 
 const Post = () => {
   return (
