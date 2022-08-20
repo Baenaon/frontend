@@ -25,7 +25,7 @@ export default function Header() {
             <a className="mr-5 hover:text-gray-900">지도</a>
             <a className="mr-5 hover:text-gray-900">게시판</a>
             <a className="mr-5 hover:text-gray-900" href="/login">
-              로그인
+              로그인, ddd
             </a>
           </nav>
         </div>
