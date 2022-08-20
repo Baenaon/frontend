@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
     console.log(email);
     console.log(password);
-// dldjf
+
     const users = {
       username: username,
       email: email,
@@ -39,7 +39,7 @@ function Login() {
           "content-Type": "application/json",
           accept: "application/json",
         },
-        body: JSON.parse(userss);
+        body: JSON.parse(userss)
       })
       .then((res) => {
         console.log(res);
