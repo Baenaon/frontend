@@ -6,11 +6,19 @@ export const initialState = {
 
 // 액션 이름을 정의한 것입니다. 오타 방지를 위한 코드입니다.
 export const LOG_IN = "LOG_IN";
+export const NAME_INPUT = "NAME_INPUT";
 
 // 액션을 만들어 주는 함수 입니다.
 export const logInAction = (data) => {
   return {
     type: LOG_IN,
+    data,
+  };
+};
+
+export const nameInputAction = (data) => {
+  return {
+    type: NAME_INPUT,
     data,
   };
 };
@@ -22,6 +30,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      };
+    }
+    case NAME_INPUT: {
+      return {
+        ...state,
+        user: action.data,
       };
     }
     default:
