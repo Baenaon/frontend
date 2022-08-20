@@ -1,6 +1,28 @@
-import Link from "next/link";
+import React, { useCallback, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { logInAction } from "../../reducers/user";
 
 export default function Header() {
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  console.log(isLoggedIn);
+
+  // const onloginevent = useCallback(() => {
+  //   dispatch(logInAction());
+  // }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://6849b5a2-f64f-4b03-894c-a27639674297.mock.pstmn.io/login")
+  //     .then(function (result) {
+  //       console.log("통신결과:", result);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("error", error);
+  //     });
+  // }, []);
+
   return (
     <>
       <header className="text-gray-600 body-font">
@@ -24,9 +46,17 @@ export default function Header() {
             <a className="mr-5 hover:text-gray-900">Home</a>
             <a className="mr-5 hover:text-gray-900">지도</a>
             <a className="mr-5 hover:text-gray-900">게시판</a>
-            <a className="mr-5 hover:text-gray-900" href="/login">
-              로그인, ddddddd
-            </a>
+            {isLoggedIn ? (
+              <a className="mr-5 hover:text-gray-900">마이페이지</a>
+            ) : (
+              <a
+                className="mr-5 hover:text-gray-900"
+                href="/login"
+                // onClick={onloginevent}
+              >
+                로그인
+              </a>
+            )}
           </nav>
         </div>
       </header>
