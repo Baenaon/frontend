@@ -1,34 +1,48 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactDOM from "react-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../pages/components/header"
+import { useSelector, useDispatch } from "react-redux";
+import Header from "../pages/components/header";
 
-const Post = () => {
+const PostForm = () => {
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const mainPosts = useSelector((state) => state.post);
+
+  const [contentText, setContentText] = useState("");
+  const dispatch = useDispatch();
+
+  const onChangeText = useCallback((e) => {
+    setContentText(e.target.value);
+    console.log(contentText);
+  }, []);
+
+  const onSubmit = useCallback(() => {
+    dispatch(addPost);
+  }, []);
+
   return (
     <div>
       <Header />
       <div class="flex items-center justify-center p-12">
         <div class="mx-auto w-full max-w-[700px]">
-          <form action="https://formbold.com/s/FORM_ID" method="POST">
-            <div class="mb-5">
-              <label class="mb-3 block text-base font-medium text-[#07074D]">
-                위치
-              </label>
-              <input
-                type="text"
-                placeholder="위치를 선택하세요"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
+          <div className="mb-9">
+            <label
+              className="mb-3 block text-base font-light
+
+             text-[#07074D]"
+            >
+              위치
+            </label>
+
+            <label className="mb-3 block text-base font-medium text-[#07074D]">
+              GS 편의점
+            </label>
+          </div>
+          <form onFinish={onSubmit}>
             <div class="mb-5">
               <label class="mb-3 block text-base font-medium text-[#07074D]">
                 음식 종류
               </label>
-              <input
-                placeholder="음식 종류"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
             </div>
             <div class="mb-5">
               <label
@@ -53,6 +67,7 @@ const Post = () => {
                 내용
               </label>
               <textarea
+                onChange={onChangeText}
                 rows="9"
                 name="message"
                 id="message"
@@ -72,4 +87,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default PostForm;
