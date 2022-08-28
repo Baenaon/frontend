@@ -1,7 +1,7 @@
 // 초기 state 입니다.
 export const initialState = {
   isLoggedIn: false,
-  user: null,
+  me: null,
 };
 
 // 액션 이름을 정의한 것입니다. 오타 방지를 위한 코드입니다.
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
     case NAME_INPUT: {
       return {
         ...state,
-        user: action.data,
+        me: action.data,
       };
     }
     default:
