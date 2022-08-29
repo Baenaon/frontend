@@ -42,6 +42,7 @@ function Map() {
       .catch(function (error) {
         console.log(error);
       });
+    console.log(location_list)
 
     const mapScript = document.createElement("script");
 

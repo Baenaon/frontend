@@ -6,7 +6,6 @@ import { logInAction } from "../../reducers/user";
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(isLoggedIn);
 
   // const onloginevent = useCallback(() => {
   //   dispatch(logInAction());

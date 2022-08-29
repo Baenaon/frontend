@@ -1,61 +1,45 @@
+import produce from "../util/produce";
+
 export const initialState = {
-  mainPosts: [
-    {
-      id: 1,
-      User: {
-        id: 1,
-        nickname: "지민",
-      },
-      content: "첫 번째 게시글",
-      Comments: [
-        {
-          User: {
-            nickname: "nero",
-          },
-          content: "배달시킬분",
-        },
-        {
-          User: {
-            nickname: "hero",
-          },
-          content: "저요~",
-        },
-      ],
-    },
-  ],
-  postAdded: false,
+  mainPosts: [],
+  addPostLoading: false,
+  addPostDone: false,
+  addPostError: null,
 };
 
-const ADD_POST = "ADD_POST";
+// 액션 변수 설정
+export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
+export const ADD_POST_SUCCESS = "ADD_POST_SUCCESS";
+export const ADD_POST_FAILURE = "ADD_POST_FAILURE";
 
-export const addPost = {
-  type: ADD_POST,
-};
+// 액션 정의 addPost를 실행하면 ADD_POST_REQUEST 액션이 실행된다.
+export const addPost = (data) => ({
+  type: ADD_POST_REQUEST,
+  data,
+});
 
-const dummyPost = {
-  id: 2,
-  content: "더미데이터입니다.",
-  User: {
-    id: 1,
-    nickname: "제로초",
-  },
-
-  Comments: [],
-};
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_POST: {
-      return {
-        ...state,
-        mainPosts: [dummyPost, ...state.mainPosts],
-        postAdded: true,
-      };
+// 이전 상태를 액션을 통해 다음 상태로 만들어 내는 함수 (불변성을 지키면서)
+const reducer = (state = initialState, action) =>
+  produce(state, (draft) => {
+    switch (action.type) {
+      case ADD_POST_REQUEST:
+        draft.addPostLoading = true;
+        draft.addPostDone = false;
+        draft.addPostError = null;
+        break;
+      case ADD_POST_SUCCESS:
+        draft.addPostLoading = false;
+        draft.addPostDone = true;
+        draft.mainPosts.unshift(action.data);
+        draft.imagePaths = [];
+        break;
+      case ADD_POST_FAILURE:
+        draft.addPostLoading = false;
+        draft.addPostError = action.error;
+        break;
+      default:
+        break;
     }
-    default: {
-      return {
-        ...state,
-      };
-    }
-  }
-};
+  });
+
+export default reducer;
