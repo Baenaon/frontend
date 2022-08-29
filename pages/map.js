@@ -2,13 +2,34 @@ import styled from "@emotion/styled";
 import React, { useEffect } from "react";
 import Mapimg from "./mapimg";
 
-const dummyData = [
-  { location_name: "경비실 1", lat: 121, long: 43, postcount: 3 },
-  { location_name: "경비실 1", lat: 121, long: 43, postcount: 3 },
-  { location_name: "경비실 1", lat: 121, long: 43, postcount: 3 },
-];
+// 더미데이터입니다
+// {
+//   locationList: [
+//     {
+//       locationName: "경비실 1",
+//       lat: 33.450701,
+//       long: 126.570667,
+//       postCount: 3,
+//     },
+//     { locationName: "경비실 1", lat: 33.4508, long: 126.5702, postCount: 3 },
+//     { locationName: "경비실 1", lat: 33.4509, long: 126.5709, postCount: 3 },
+//   ];
+// }
 
 function Map() {
+  const location_list = {
+    locationList: [
+      {
+        locationName: "경비실 1",
+        lat: 33.450701,
+        long: 126.570667,
+        postCount: 3,
+      },
+      { locationName: "경비실 1", lat: 33.4508, long: 126.5702, postCount: 3 },
+      { locationName: "경비실 1", lat: 33.4509, long: 126.5709, postCount: 3 },
+    ],
+  };
+
   useEffect(() => {
     const mapScript = document.createElement("script");
 
