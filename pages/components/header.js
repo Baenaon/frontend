@@ -44,7 +44,9 @@ export default function Header() {
           </a>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-gray-900">Home</a>
-            <a className="mr-5 hover:text-gray-900">지도</a>
+            <a className="mr-5 hover:text-gray-900" href="/map">
+              지도
+            </a>
             <a className="mr-5 hover:text-gray-900" href="/postCard">
               게시판
             </a>

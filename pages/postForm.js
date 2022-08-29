@@ -13,7 +13,6 @@ const PostForm = () => {
 
   const onChangeText = useCallback((e) => {
     setContentText(e.target.value);
-    console.log(contentText);
   }, []);
 
   const onSubmit = useCallback(() => {
