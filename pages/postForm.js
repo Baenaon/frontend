@@ -3,21 +3,44 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../pages/components/header";
+import { ADD_POST_REQUEST, ADD_POST_SUCCESS } from "../reducers/post";
 
 const PostForm = () => {
   const { isLoggedIn } = useSelector((state) => state.user);
   const mainPosts = useSelector((state) => state.post);
 
-  const [contentText, setContentText] = useState("");
+  const [content, setContentText] = useState("");
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
-  const onChangeText = useCallback((e) => {
+  const onChangeText = (e) => {
+    e.preventDefault();
     setContentText(e.target.value);
-  }, []);
+  };
 
-  const onSubmit = useCallback(() => {
-    dispatch(addPost);
-  }, []);
+  const onChangeTitle = (e) => {
+    e.preventDefault();
+    setTitle(e.target.value);
+  };
+
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log(content);
+      console.log(title);
+      const formData = {
+        Title: title,
+        Content: content,
+      };
+      console.log(formData);
+      // e.preventDefault();
+      dispatch({
+        type: ADD_POST_REQUEST,
+        data: formData,
+      });
+    },
+    [content, title]
+  );
 
   return (
     <div>
@@ -37,7 +60,7 @@ const PostForm = () => {
               GS 편의점
             </label>
           </div>
-          <form onFinish={onSubmit}>
+          <form onSubmit={onSubmit}>
             <div class="mb-5">
               <label class="mb-3 block text-base font-medium text-[#07074D]">
                 음식 종류
@@ -51,12 +74,12 @@ const PostForm = () => {
                 제목
               </label>
               <input
+                onChange={onChangeTitle}
+                value={title}
                 type="text"
-                name="subject"
-                id="subject"
                 placeholder="제목을 입력하세요."
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
+              ></input>
             </div>
             <div class="mb-5">
               <label
@@ -68,7 +91,6 @@ const PostForm = () => {
               <textarea
                 onChange={onChangeText}
                 rows="9"
-                name="message"
                 id="message"
                 placeholder="내용을 입력하세요."
                 class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
