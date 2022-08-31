@@ -43,10 +43,10 @@ export default function Header() {
           </a>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-gray-900">Home</a>
-            <a className="mr-5 hover:text-gray-900" href="/map">
+            <a className="mr-5 hover:text-gray-900" href="/maps">
               지도
             </a>
-            <a className="mr-5 hover:text-gray-900" href="/postCard">
+            <a className="mr-5 hover:text-gray-900" href="/postCards">
               게시판
             </a>
             {isLoggedIn ? (
