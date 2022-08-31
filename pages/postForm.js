@@ -29,8 +29,8 @@ const PostForm = () => {
       console.log(content);
       console.log(title);
       const formData = {
-        Title: title,
-        Content: content,
+        title: title,
+        content: content,
       };
       console.log(formData);
       // e.preventDefault();

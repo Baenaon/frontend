@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import Mapimg from "./mapimg";
 import axios from "axios";
+import Header from "../pages/components/header";
 
 // 더미데이터입니다
 // {
@@ -42,7 +43,7 @@ function Map() {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(location_list)
+    console.log(location_list);
 
     const mapScript = document.createElement("script");
 
@@ -90,7 +91,11 @@ function Map() {
     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
   }, []);
 
-  return <MapContainer id="map" />;
+  return (
+    <div>
+      <Header /> <MapContainer id="map" />
+    </div>
+  );
 }
 const MapContainer = styled.div`
   aspect-ratio: 320 / 220;

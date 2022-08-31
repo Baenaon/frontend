@@ -4,9 +4,19 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../pages/components/header";
 import PostCard from "../pages/postCard";
+import { LOAD_POSTS_REQUEST } from "../reducers/post";
 
 const PostCards = () => {
-  const mainPosts = useSelector((state) => state.post.mainPosts);
+  const dispatch = useDispatch();
+  const mainPosts = useSelector((state) => state.post);
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_POSTS_REQUEST,
+    });
+  }, [mainPosts]);
+
+  console.log(mainPosts);
   return (
     <div>
       <Header />
