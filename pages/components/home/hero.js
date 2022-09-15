@@ -1,4 +1,5 @@
 import Animation from "./animation";
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
@@ -14,9 +15,11 @@ export default function Hero() {
           아껴드릴게요
         </p>
         <div className="flex justify-center">
-          <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-            배달시키러가기
-          </button>
+          
+            <a href="./map" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              배달시키러가기
+            </a>
+         
         </div>
       </div>
       <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
