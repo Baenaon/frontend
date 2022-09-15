@@ -3,8 +3,9 @@ import Image from "next/image";
 import Layout from "../pages/components/layout";
 import Hero from "./components/home/hero";
 import Animation from "./components/home/animation";
+import wrapper from "../store/configureStore";
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <Head>
@@ -19,4 +20,8 @@ export default function Home() {
       </section>
     </Layout>
   );
-}
+};
+
+
+
+export default Home;

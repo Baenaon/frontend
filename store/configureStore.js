@@ -6,11 +6,10 @@ import createSagaMiddleware from "redux-saga";
 import reducer from "../reducers";
 import rootSaga from "../sagas";
 
-const loggerMiddleware =
-  ({ dispatch, getState }) =>
-  (next) =>
-  (action) => {
-    console.log(action);
+const loggerMiddleware = ({ dispatch, getState }) => (next) => (action) => {
+    if (typeof action === 'function') {
+        return action(dispatch, getState);
+    }
     return next(action);
   };
 
