@@ -39,7 +39,7 @@
 >   - react-kakao-maps-sdk 1.1.3
 >   - react-lottie-player ".4.3
 >   - react-redux 8.0.2
->   - react-router-do 6.4.0
+>   - react-router-dom 6.4.0
 >   - react-sdk 0.0.0
 >   - redux 4.2.0
 >   - redux-devtools-extension 2.13.9
@@ -116,9 +116,9 @@
 >
 >   | File Name | Directory | 목적        |
 >   | --------- | --------- | ----------- |
->   | index.js  | /sgas/    | saga        |
->   | signup.js | /sgas/    | 사용자 saga |
->   | post.js   | /sgas/    | 게시글 sgag |
+>   | index.js  | /sagas/    | saga        |
+>   | signup.js | /sagas/    | 사용자 saga |
+>   | post.js   | /sagas/    | 게시글 sgag |
 >   
 ### ***Backend End-points*** 
 > Resource modeling(수정 예정)
